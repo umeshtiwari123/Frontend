@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Hospital Admission Forecasts</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>COVID-19 Hospital Admission Forecasts</h1>
+            <hr>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <h2>Projected Daily COVID Hospital Admissions per 500k</h2>
+            <p>ForecastHub ensemble forecast (95% credible interval)</p>
+            <p style="font-weight: bold; font-style: normal;">Select a state to see more information</p>
+            <div id="map"></div>
+        </div>
+        <script src="map.js"></script>
+
+        <div class="overview-layout">
+            <h1 id="selected-state">US</h1>
+            <div class="subtitle">Projected <span class="text-TK">TK</span> hospital admissions per 500k</div>
+            <p style="font-style: italic;">(95% credible interval: XX–YY hospital admissions per 500k)</p>
+
+            <div class="divider"></div>
+
+            <div class="legend">Forecasted daily COVID-19 hospital admissions per 500k</div>
+            <div class="color-boxes" , id="legend-colorbar">
+                <!-- Color boxes will be populated dynamically -->
+            </div>
+
+            <p style="font-style: italic; color: #676767;">See the ForecastHub ensemble forecast for</p>
+
+            <div class="timing">
+                <label><input type="radio" name="timing" value="1-week"> 1 week ahead</label>
+                <label><input type="radio" name="timing" value="2-weeks"> 2 weeks ahead</label>
+            </div>
+        </div>
+        <p style="font-size: large; color: #676767; text-align: center;">View more forecasts below</p>
+        <hr>
+        <!-- Chart Section -->
+        <div class="chart-section">
+            <h2>Forecasts of Daily COVID Hospital Admissions</h2>
+            <div class="chart">
+                <!-- <img src="chart.png" alt="Chart showing forecasted hospital admissions"> -->
+            </div>
+        </div>
+
+        <div class="chart-container" id="chart-container">
+            <!-- Include your custom script file -->
+            <!-- <div><script src="scriptstart.js"></script></div> -->
+            <script src="plot.js"></script>
+        </div>
+
+        <!-- Model Selection Section -->
+
+        <div class="chart-labels-container">
+            <div class="historical-data">Historical data</div>
+            <!-- <div class="chart-labels" id="forecasthub-ensemble-chart-label">
+                <div class="forecast-column">
+                    <div class="label-two">Forecast median<div class="forecast-median"></div>
+                    </div>
+                    <div class="label-two">95% confidence interval<div class="confidence-interval"></div>
+                    </div>
+                    <div class="label-two">Forecast name<div class="forecast-name">ForecastHub ensemble</div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="model-section">
+            <h2>Select Models</h2>
+            <div class="model-checkboxes">
+                <label><input type="checkbox" id="cfa-wwrenewal"  disabled="disabled">   ForecastHub ensemble</label>
+                <label><input type="checkbox" id="COVIDhub-baseline"> COVIDhub-baseline</label>
+                <label><input type="checkbox" id="COVIDhub-4_week_ensem" > COVIDhub-4_week_ensemble</label>
+                <label><input type="checkbox" id="COVIDhub-4_week_ensemble" > COVIDhub-4_week_ensemble</label>
+                <label><input type="checkbox" id="COVIDhub-4_week_ensembl" > OHT_JHU-hybrid</label>
+                <label><input type="checkbox" id="cfa-wwrenewal"  disabled="disabled"> cfa-wvrenewal</label>
+                <label><input type="checkbox" id="COVIDhub-DC-ensemble" > COVIDhub-DC-ensemble</label>
+                <label><input type="checkbox" id="MOBS-GLEAM-COVID" > MOBS-GLEAM-COVID</label>
+                <label><input type="checkbox" id="CEPH-Rtrend_covid" > CEPH-Rtrend_covid</label>
+                <label><input type="checkbox" id="Another Model" > Another Model</label>
+                <script src="checkbox_selection.js"></script>
+                <!-- Add more models as needed -->
+            </div>
+            <div class="inline-elements">
+                <div class="location">
+                    <strong>Location</strong>
+                    </br>
+                    <select id="location">
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+
+                <div class="credible-interval">
+                    <label><strong>Credible Interval</strong></label>
+                    <div>
+                        <label><input type="radio" name="credible-interval" value=95 checked> 95% credible
+                            interval</label>
+                        </br>
+                        <label><input type="radio" name="credible-interval" value=50> 50% credible interval</label>
+                    </div>
+                </div>
+
+                <div class="date-starting">
+                    <label><strong>Date Starting From</strong></label>
+                    </br>
+                    <select id="month">
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+
+                    <select id="year">
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <!-- Add more years as needed -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <a href="#" class="button" id="export-pdf">Export this chart (PDF)</a>
+                <script src="export_pdf.js"></script>
+                <a href="#" class="button">Download data (CSV)</a>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <img src="assets/chart-icon.svg" alt="Chart Icon" style="width: 50px; height: 40px;" />
+
+            <h2>What can this chart tell us?</h2>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea com </p>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <hr>
+
+            <dl class="faq">
+                <dt>What's an ensemble forecast?</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</dd>
+                <dt>How do I interpret the confidence level?</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</dd>
+                <dt>Where does the data come from?</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</dd>
+                <dt>How is the model list made? Where did this model go?</dt>
+                <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</dd>
+            </dl>
+
+                
+            <!-- <script>document.getElementById("COVIDhub-baseline").disabled = true;</script>   -->
+            <script src="accordion.js"></script>
+        </div>
+    </div>
+</body>
+
+</html>

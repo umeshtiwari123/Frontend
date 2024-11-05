@@ -1,0 +1,527 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+/* @media (max-width: 800px) {
+  body {
+    display: inline-flex;
+  }
+} */
+
+.header {
+  background-color: #ffffff;
+  color: #0b4779;
+  text-align: center;
+  padding: 15px;
+}
+
+.container {
+  padding: 20px;
+}
+
+.map-section,
+.chart-section,
+.model-section,
+.faq-section {
+  margin-bottom: 30px;
+}
+
+.model-section {
+  border-radius: 20px;
+  padding: 10px;
+  border: 2px solid #000
+}
+
+.map-section img {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+}
+
+.map-section {
+  text-align: center;
+  font-style: italic;
+}
+
+.map-section p {
+  color: #686868;
+}
+
+.chart-section h2 {
+  text-align: center;
+}
+
+h2 {
+  color: #000000;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.chart {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.chart-container svg {
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 800px) {
+  .chart-container {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  #map {
+    overflow-x: auto;
+  }
+}
+
+.model-section .model-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Media query for mobile view (2 columns) */
+@media (max-width: 600px) {
+  .model-section .model-checkboxes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.inline-elements {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
+  ;
+}
+
+.overview-layout {
+  max-width: 800px;
+  padding: 20px;
+  margin: 0 auto;
+  border: 2px solid #000;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 800px) {
+  .overview-layout {
+    text-align: center;
+  }
+}
+
+
+.overview-layout h1 {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+
+.cali-title {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: math;
+}
+
+
+.subtitle {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.text-TK {
+  font-weight: bold;
+}
+
+
+.interval {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.divider {
+  margin: 15px 0;
+  border-top: 2px solid #ddd;
+}
+
+.legend {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.color-boxes {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0px 10px 0px;
+}
+
+.color-box {
+  width: 25px;
+  height: 25px;
+  line-height: 20px;
+  justify-content: space-between;
+  background-color: #000;
+  display: inline-flex;
+}
+
+/* Container Styling */
+.chart-labels-container {
+  padding: 20px;
+  width: fit-content;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  /* Center align the container */
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .chart-labels-container {
+    width: min-content;
+  }
+}
+
+/* Historical Data Line Styling */
+.historical-data {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+}
+
+.historical-data::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background-color: #333;
+  margin-right: 10px;
+}
+
+.label-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Forecast Sections Styling */
+.chart-labels {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-inline: 40px;
+  margin-top: 20px;
+}
+
+input[type="checkbox"]:disabled {
+    appearance: none;
+    transform: scale(1.5);
+    width: 15px;
+    height: 15px;
+    border: 1px solid #aaa;
+    background-color: #b3b3b3;
+    cursor: not-allowed;
+    margin-right: 10px;
+}
+
+
+
+/* Forecast Column Styling */
+.forecast-column {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+}
+
+.forecast-column-two {
+  display: flex;
+  flex-direction: row;
+  width: 360px;
+  justify-content: space-around;
+}
+
+/* Labels Styling */
+.label {
+  font-size: 12px;
+  color: #666;
+  width: 70px;
+  margin-bottom: 5px;
+}
+
+.label-two {
+  font-size: 12px;
+  color: #666;
+  width: 70px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+/* Forecast Median Line */
+.forecast-median {
+  width: 30px;
+  height: 3px;
+  background-color: #1a688a;
+  margin-bottom: 5px;
+  font-style: italic;
+}
+
+/* Confidence Interval Square */
+.confidence-interval {
+  width: 20px;
+  height: 20px;
+  background-color: #c6dfe8;
+  margin-bottom: 5px;
+}
+
+/* Forecast Name Styling */
+.forecast-name {
+  font-weight: bold;
+  font-style: normal;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: #999;
+  /* font-style: italic; */
+}
+
+.timing {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.circle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.circle span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-range {
+  vertical-align: super;
+  margin-left: 10px;
+}
+
+.ten {
+  padding-top: 3px;
+}
+
+.fifteen {
+  padding-top: 3px;
+}
+
+.twenty {
+  padding-top: 3px;
+}
+
+.twenty-plus {
+  padding-top: 3px;
+}
+
+.circle.one-week span {
+  border: 2px solid #333;
+}
+
+.circle.two-weeks span {
+  background-color: #ccc;
+  border: 2px solid #333;
+}
+
+@media (max-width: 600px) {
+  .inline-elements {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.model-checkboxes label {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background-color: #f1f1f1;
+  /* Background color for each checkbox area */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.model-checkboxes label:hover {
+  background-color: #e0e0e0;
+  /* Background color on hover */
+}
+
+.faq-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-section h2 {
+  margin-bottom: 10px;
+}
+
+.faq dt {
+  cursor: pointer;
+  padding: 15px;
+  margin: 20px 0;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+  position: relative;
+  padding-right: 30px;
+  border: 1px solid #000
+}
+
+.faq dt::after {
+  content: '+';
+  position: absolute;
+  right: 20px;
+  font-size: 1.2em;
+  color: #000;
+}
+
+.faq dt:hover {
+  background-color: #d2d2d2;
+}
+
+.faq dd {
+  padding: 15px;
+  background-color: white;
+  border-radius: 50px;
+  display: none;
+}
+
+.faq dd.show {
+  display: block;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  border-radius: 10px;
+  text-decoration: none;
+  border: 3px solid #000
+}
+
+.button:hover {
+  background-color: #d2d2d2;
+  color: #000;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.info-section {
+  background-color: #e7f5f8;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-section h2 {
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+select {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 10px;
+  border: 2px solid #000;
+  background-color: #ffffff;
+  color: #000;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+select:hover {
+  background-color: #f1f1f1;
+  border-color: #005a8b;
+}
+
+select:focus {
+  outline: none;
+  border-color: #005a8b;
+  box-shadow: 0 0 5px rgba(0, 90, 139, 0.5);
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 0.9em;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #000000 transparent transparent;
+}
+
+.tooltip.show {
+  opacity: 1;
+}
+
+.state {
+  stroke: #fff;
+  stroke-width: 0.5;
+  cursor: pointer;
+}
+
+.state:hover {
+  fill: #999;
+}
+
+.state.selected {
+  stroke: #c15727;
+  stroke-width: 5;
+}
