@@ -1,2 +1,0 @@
-# Frontend
-Created with CodeSandbox
